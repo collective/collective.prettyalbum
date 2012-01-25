@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+  <metal:content-core fill-slot="main">
+    <metal:block define-macro="main">
+      
+      <div class="prettySlide"
+           tal:define="view nocall:context/@@album_slide_view">
+        
+        <a class="prev" title="previous">&nbsp;</a>
+        <a class="next" title="next">&nbsp;</a>
+        
+        <ul class="imageslidetabs">
+          <li tal:repeat="idx python:range(view.count)">
+            <a href=""
+               tal:attributes="class python: idx == 0 and 'current' or None"
+               tal:content="python: idx + 1">idx</a>
+          </li>
+        </ul>
+          
+        <div class="visualClear"></div>
+          
+        <div class="imageslidepane">
+          
+          <div class="items">
+            <div tal:condition="view/count"
+                 tal:define="image_data view/image_data">
+              <img src="" alt=""
+                   tal:attributes="src python:image_data['images'][0] + '/image_large';
+                                   alt python:image_data['titles'][0]" />
+            </div>
+            <div tal:repeat="idx python:range(view.count - 1)">
+              <img src="slide_image_loading.jpeg" alt="Loading" />
+            </div>
+          </div>
+          
+        </div>
+      
+      </div>
+      
+      <div class="visualClear"></div>
+
+    </metal:block>
+  </metal:content-core>
+</body>
+
+</html>

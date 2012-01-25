@@ -1,0 +1,14 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+
+  <include package="Products.GenericSetup" file="meta.zcml" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.prettyalbum"
+      directory="profile"
+      description="Extension profile for collective.prettyalbum."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+  />
+
+</configure>

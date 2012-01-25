@@ -1,0 +1,46 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!-- styles -->
+  <browser:resource
+    name="collective.prettyalbum.css"
+    file="styles.css"
+  />
+  
+  <!-- JS -->
+  <browser:resource
+    name="collective.prettyalbum.js"
+    file="prettyalbum.js"
+  />
+  
+  <!-- images -->
+  <browser:resourceDirectory
+    name="collective.prettyalbum.images"
+    directory="images"
+  />
+  
+  <!-- views -->
+  <browser:page
+    for="*"
+    name="albums_browser_view"
+    class=".views.AlbumsView"
+    permission="zope.Public"
+  />
+  
+  <browser:page
+    for="*"
+    name="prettyalbum_json_data"
+    attribute="prettyalbum_json_data"
+    class=".views.JSONView"
+    permission="zope.Public"
+  />
+  
+  <browser:view
+    for="*"
+    name="album_slide_view"
+    class=".views.SlideView"
+    permission="zope.Public"
+    allowed_attributes="count image_data"
+  />
+
+</configure>

@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+  <metal:content-core fill-slot="main">
+    <metal:block define-macro="main">
+      
+      <div class="prettyAlbums">
+      
+        <tal:albums repeat="album context/@@albums_browser_view/albums">
+          <div class="photoAlbumTeaser">
+            <h3 class="photoAlbumTitle"
+                tal:condition="album/title"
+                tal:content="album/title">Title</h3>
+            <div class="photoAlbumPreview"
+                 tal:attributes="style album/preview_style|nothing">
+              <a tal:condition="album/preview"
+                 tal:attributes="href string:javascript:void(0);
+                                 onclick string:jq.prettyPhoto.open(${album/urls},${album/titles},${album/descriptions});
+                                 title album/description;">
+                <img src=""
+                     alt=""
+                     tal:replace="structure python:album['preview'].tag(scale='thumb', title=album['description'])" />
+              </a>
+            </div>
+            <p class="photoAlbumDescription"
+               tal:condition="album/description"
+               tal:content="structure album/description">Description</p>
+          </div>
+        </tal:albums>
+
+        <div class="visualClear"><!-- --></div>
+      
+      </div>
+
+    </metal:block>
+  </metal:content-core>
+</body>
+
+</html>
