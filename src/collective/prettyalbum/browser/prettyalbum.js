@@ -31,6 +31,9 @@
                         $('img', item)
                             .attr('src', data.images[index] + '/image_large')
                             .attr('alt', data.titles[index]);
+                        $('.slideimagetitle').html(data.titles[index]);
+                        $('.slideimagedescription').html(
+                            data.descriptions[index]);
                     }
                 }).navigator({
                     navi: '.imageslidetabs',
@@ -40,7 +43,7 @@
                 });
                 var api = slides.data('scrollable');
                 $('img', slides).bind('click', function() {
-                	api.next();
+                    api.next();
                 });
             });
         }

@@ -70,6 +70,9 @@ ul.imageslidetabs a {
 ul.imageslidetabs a.current {
     font-weight:bold;
 }
+.slideimagetitle {
+    margin-top:0.5em;
+}
 .imageslidepane {
     position:relative;
     overflow:hidden;

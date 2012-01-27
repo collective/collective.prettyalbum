@@ -11,7 +11,8 @@
     <metal:block define-macro="main">
       
       <div class="prettySlide"
-           tal:define="view nocall:context/@@album_slide_view">
+           tal:define="view nocall:context/@@album_slide_view;
+                       image_data view/image_data;">
         
         <a class="prev" title="previous">&nbsp;</a>
         <a class="next" title="next">&nbsp;</a>
@@ -25,12 +26,21 @@
         </ul>
           
         <div class="visualClear"></div>
-          
+        
+        <h3 class="slideimagetitle"
+            tal:content="python:image_data['titles'][0]">
+        </h3>
+        
+        <div class="slideimagedescription"
+             tal:content="python:image_data['descriptions'][0]">
+        </div>
+        
+        <div class="visualClear"></div>
+        
         <div class="imageslidepane">
           
           <div class="items">
-            <div tal:condition="view/count"
-                 tal:define="image_data view/image_data">
+            <div tal:condition="view/count">
               <img src="" alt=""
                    tal:attributes="src python:image_data['images'][0] + '/image_large';
                                    alt python:image_data['titles'][0]" />
