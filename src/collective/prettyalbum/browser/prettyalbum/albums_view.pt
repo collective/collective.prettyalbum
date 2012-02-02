@@ -19,14 +19,25 @@
                 tal:content="album/title">Title</h3>
             <div class="photoAlbumPreview"
                  tal:attributes="style album/preview_style|nothing">
-              <a tal:condition="album/preview"
-                 tal:attributes="href string:javascript:void(0);
-                                 onclick string:jq.prettyPhoto.open(${album/urls},${album/titles},${album/descriptions});
-                                 title album/description;">
-                <img src=""
-                     alt=""
-                     tal:replace="structure python:album['preview'].tag(scale='thumb', title=album['description'])" />
-              </a>
+              <tal:overlay condition="not:album/direct">
+                <a tal:condition="album/preview"
+                   tal:attributes="href string:javascript:void(0);
+                                   onclick string:jq.prettyPhoto.open(${album/urls},${album/titles},${album/descriptions});
+                                   title album/description;">
+                  <img src=""
+                       alt=""
+                       tal:replace="structure python:album['preview'].tag(scale='thumb', title=album['description'])" />
+                </a>
+              </tal:overlay>
+              <tal:direct condition="album/direct">
+                <a tal:condition="album/preview"
+                   tal:attributes="href album/url;
+                                   title album/description;">
+                  <img src=""
+                       alt=""
+                       tal:replace="structure python:album['preview'].tag(scale='thumb', title=album['description'])" />
+                </a>
+              </tal:direct>
             </div>
             <p class="photoAlbumDescription"
                tal:condition="album/description"

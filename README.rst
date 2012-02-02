@@ -34,6 +34,16 @@ please just contact one of us
 History
 =======
 
+0.5
+---
+
+- Improve albums view 
+  [rnix]
+
+- Show title and description in slide view if available
+  [rnix]
+
+
 0.4
 ---
 

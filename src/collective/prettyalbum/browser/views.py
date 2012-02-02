@@ -16,6 +16,8 @@ class AlbumsView(BrowserView):
             images=0, folders=1, subimages=0, others=0)
         albums = list()
         for brain in result['folders']:
+            obj = brain.getObject()
+            direct = obj.getLayout() == 'slide_view'
             images = self.context.portal_catalog({
                 'portal_type': 'Image',
                 'sort_on': 'getObjPositionInParent',
@@ -27,6 +29,8 @@ class AlbumsView(BrowserView):
             album = dict()
             album['title'] = brain.Title
             album['description'] = brain.Description.replace('\r\n', '<br />')
+            album['direct'] = direct
+            album['url'] = obj.absolute_url()
             album['preview'] = None
             album['preview_style'] = None
             album['urls'] = list()
