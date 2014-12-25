@@ -5,13 +5,14 @@ version = "0.5"
 
 setup(name='collective.prettyalbum',
       version=version,
-      description="",
+      description="Extension for collective.prettyphoto",
       long_description="",
       classifiers=[
           "Framework :: Plone",
           "Programming Language :: Python",
           "Topic :: Software Development :: Libraries :: Python Modules",
       ],
+      url="https://github.com/collective/collective.prettyalbum"'
       keywords='web zope plone theme',
       author='BlueDynamics Alliance',
       author_email='dev@bluedynamics.com',
