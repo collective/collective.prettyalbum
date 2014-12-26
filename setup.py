@@ -12,7 +12,7 @@ setup(name='collective.prettyalbum',
           "Programming Language :: Python",
           "Topic :: Software Development :: Libraries :: Python Modules",
       ],
-      url="https://github.com/collective/collective.prettyalbum"'
+      url='https://github.com/collective/collective.prettyalbum',
       keywords='web zope plone theme',
       author='BlueDynamics Alliance',
       author_email='dev@bluedynamics.com',
